@@ -8,6 +8,9 @@ Duglas Edge is a multi tabbed browser written in Clarion 10. It uses [Easy Edge 
 - Search works directly from the address bar.
 - InPrivate tabs.
 - Saved as PDF pages are opened in separate tabs.
+- Mute/unmute the page.
+- List of page cookies.
+- Color scheme support.
 
 ### Contacts
 mikeduglas@yandex.ru
