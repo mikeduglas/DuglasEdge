@@ -5,7 +5,8 @@ Duglas Edge is a multi tabbed browser written in Clarion 10. It uses [Easy Edge 
 ![Many tabs opened at the same time](https://github.com/mikeduglas/DuglasEdge/blob/master/screenshots/DuglasEdge_2.png?raw=true)     
 
 ### Some features
-- Search works directly from the address bar.
+- Smart address bar.
+- Favicons.
 - InPrivate tabs.
 - Saved as PDF pages are opened in separate tabs.
 - Mute/unmute the page.
