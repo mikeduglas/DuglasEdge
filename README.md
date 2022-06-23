@@ -16,6 +16,8 @@ Duglas Edge is a multi tabbed browser written in Clarion 11.1. It uses [Easy Edg
 - Favorite web pages.
 - Full screen mode.
 - Open links in background (Ctrl+Right click on a link).
+- History menu.
+- Downloads menu.
 
 ### Contacts
 mikeduglas@yandex.ru
