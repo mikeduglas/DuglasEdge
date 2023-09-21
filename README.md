@@ -6,21 +6,22 @@ Duglas Edge is a multi tabbed browser written in Clarion 11.1. It uses [Easy Edg
 ![Many tabs opened](https://github.com/mikeduglas/DuglasEdge/blob/master/screenshots/DuglasEdge_3.png?raw=true)     
 
 ### Some features
-- Smart address bar.
-- Favicons.
-- InPrivate tabs.
+- Smart address bar
+- Favicons
+- InPrivate tabs
 - Saved as PDF pages are opened in separate tabs.
-- Mute/unmute the page.
-- List of page cookies.
-- Color scheme support.
-- Favorite web pages.
-- Full screen mode.
-- Open links in background (Ctrl+Right click on a link).
-- History log.
-- Downloads log.
-- Edge tools.
-- Closeable tabs.
-- Save tab as MHTML.
+- Mute/unmute the page
+- List of page cookies
+- Color scheme support
+- Favorite web pages
+- Full screen mode
+- Open links in background (Ctrl+Right click on a link)
+- History log
+- Downloads log
+- Edge tools
+- Closeable tabs
+- Save tab as MHTML
+- Browser extensions
 
 ### Contacts
 mikeduglas@yandex.ru
