@@ -1,0 +1,91 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+tr {
+    cursor: pointer
+}
+.selected {
+    background-color: red;
+    color: #fff;
+    font-weight: bold
+}
+</style>
+</head>
+<body>
+<script>
+window.onload = (event) => {
+  const tbody = document.querySelector("#myTableBody");
+  let selected = null;
+  tbody.addEventListener("click", function(e) {
+    let row = e.target.closest("tr");
+    if (row === selected) {
+      row.classList.toggle("selected")
+      selected = null;
+    } else {
+      if (selected) {
+        selected.classList.toggle("selected");
+      }
+      selected = row;
+      row.classList.toggle("selected");
+    }
+  });
+  
+  const btnAdd = document.querySelector("#Add");
+  btnAdd.addEventListener("click", function(e) {
+    var msg = {"type":"Extensions","action":"Add"};
+    window.chrome.webview.postMessage(msg);
+  });
+  
+  const btnRemove = document.querySelector("#Remove");
+  btnRemove.addEventListener("click", function(e) {
+    var id = getSelectedExtensionId();
+    var msg = {"type":"Extensions","action":"Remove","id":id};
+    window.chrome.webview.postMessage(msg);
+  });
+  
+  const btnToggleEnabled = document.querySelector("#ToggleEnabled");
+  btnToggleEnabled.addEventListener("click", function(e) {
+    var id = getSelectedExtensionId();
+    var newState = getSelectedExtensionState() == "false";
+    var msg = {"type":"Extensions","action":"ToggleEnabled","id":id,"enabled":newState};
+    window.chrome.webview.postMessage(msg);
+  });
+};
+
+function getSelectedExtensionId() {
+  const tbody = document.querySelector("#myTableBody");
+  for (var i = 0, row; row = tbody.rows[i]; i++) {
+     if (row.classList.contains("selected")) {
+       // return a value of column Id
+       return row.cells[0].innerText;
+     }
+  }
+  return null;
+}
+
+function getSelectedExtensionState() {
+  const tbody = document.querySelector("#myTableBody");
+  for (var i = 0, row; row = tbody.rows[i]; i++) {
+     if (row.classList.contains("selected")) {
+       // return a value of column IsEnabled
+       return row.cells[2].innerText;
+     }
+  }
+  return null;
+}
+
+</script>
+<hr>
+<h3 style="text-align: center;">Browser extensions</h3>
+<input id="Add" type="button" value="Add extension">
+<input id="Remove" type="button" value="Remove extension">
+<input id="ToggleEnabled" type="button" value="Toggle Enabled state">
+<table id="myTable" style="margin: auto; width: 75%%;">
+  <thead>    <tr style="text-align: left;">      <th scope="col">Id</th>      <th scope="col">Name</th>      <th scope="col">Enabled</th>    </tr>
+  </thead>
+  <tbody id="myTableBody">
+%s
+  </tbody>
+</table>
+
+</body></html>

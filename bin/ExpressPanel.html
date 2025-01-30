@@ -1,11 +1,7 @@
-<!doctype html>
-<html>
-<head>
+<html><head>
 <title>Express panel</title>
 <meta name="color-scheme" content="light dark">
-</head>
-<link rel="icon" type="image/png" href="icons/_file.png">
-<style type="text/css">
+<link rel="icon" type="image/png" href="icons/_file.png"><style type="text/css">
 body {
     font: normal 18px Verdana, Arial, sans-serif;
 }
@@ -13,22 +9,25 @@ body {
   width: 50%;
   margin: 0 auto;
 }
-</style>
+</style></head>
+
+
 <body>
 <div id="menu">
-<h2>Quick access</h2>
-<p><img alt="Ingasoftplus" src="http://www.google.com/s2/favicons?domain=ingasoftplus.com" style="height:16px; width:16px" />&nbsp;<a href="http://Ingasoftplus.com" target="_self">Ingasoftplus</a></p>
-<p><img alt="ClarionHub" src="http://www.google.com/s2/favicons?domain=clarionhub.com" style="height:16px; width:16px" />&nbsp;<a href="https://clarionhub.com" target="_self">ClarionHub</a></p>
-<p><img alt="Forum on ClarionLife" src="http://www.google.com/s2/favicons?domain=clarionlife.net" style="height:16px; width:16px" />&nbsp;<a href="https://forum.clarionlife.net/" target="_self">Forum on ClarionLife</a></p>
-<p><img alt="GitHub" src="http://www.google.com/s2/favicons?domain=github.com" style="height:16px; width:16px" />&nbsp;<a href="https://github.com" target="_self">GitHub</a></p>
-<p><img alt="DropBox" src="http://www.google.com/s2/favicons?domain=dropbox.com" style="height:16px; width:16px" />&nbsp;<a href="https://dropbox.com" target="_self">DropBox</a></p>
-<p><img alt="YouTube" src="http://www.google.com/s2/favicons?domain=youtube.com" style="height:16px; width:16px" />&nbsp;<a href="https://www.youtube.com" target="_self">YouTube</a></p>
-<p><img alt="Yandex" src="http://www.google.com/s2/favicons?domain=yandex.ru" style="height:16px; width:16px" />&nbsp;<a href="http://yandex.ru" target="_self">Yandex</a></p>
-<p><img alt="Спорт-Экспресс" src="http://www.google.com/s2/favicons?domain=sport-express.ru" style="height:16px; width:16px" />&nbsp;<a href="https://www.sport-express.ru" target="_self">Спорт-Экспресс</a></p>
-<p></p>
-<p><img alt="lichess" src="http://www.google.com/s2/favicons?domain=lichess.org" style="height:16px; width:16px" />&nbsp;<a href="https://lichess.org/" target="_self">lichess.org</a></p>
-<h2>Search</h2>
-<p><input type="search" id="q" onsearch="fnSearch()"></p>
+  <h2>Quick access</h2>
+  
+  <p><img alt="Forum on ClarionLife" src="http://www.google.com/s2/favicons?domain=clarionlife.net" style="height:16px; width:16px">&nbsp;<a href="https://forum.clarionlife.net/" target="_self">Forum on ClarionLife</a></p><p><img alt="ClarionHub" src="http://www.google.com/s2/favicons?domain=clarionhub.com" style="height:16px; width:16px">&nbsp;<a href="https://clarionhub.com" target="_self">ClarionHub</a></p>
+  
+  <p><img alt="GitHub" src="http://www.google.com/s2/favicons?domain=github.com" style="height:16px; width:16px">&nbsp;<a href="https://github.com" target="_self">GitHub</a></p>
+  <p><img alt="DropBox" src="http://www.google.com/s2/favicons?domain=dropbox.com" style="height:16px; width:16px">&nbsp;<a href="https://dropbox.com" target="_self">DropBox</a></p>
+  
+  
+  <p><img alt="Yandex" src="http://www.google.com/s2/favicons?domain=yandex.ru" style="height:16px; width:16px">&nbsp;<a href="http://yandex.ru" target="_self">Дзен</a></p><p><img alt="lichess" src="http://www.google.com/s2/favicons?domain=lichess.org" style="height:16px; width:16px">&nbsp;<a href="https://lichess.org/" target="_self">lichess</a></p>
+  
+  <p><img src="http://www.google.com/s2/favicons?domain=www.twitch.tv" alt="crestbook64 - Twitch" style="height: 16px; width: 16px;"><a href="https://www.twitch.tv/crestbook64" target="_self">Crestbook on Twitch</a></p>
+  <p><img src="http://www.google.com/s2/favicons?domain=ricktube.ru" alt="RickTube" style="height: 16px; width: 16px;"><a href="https://ricktube.ru/" target="_self">RickTube</a></p>
+  <p><img alt="Ingasoftplus" src="http://www.google.com/s2/favicons?domain=ingasoftplus.com" style="height:16px; width:16px">&nbsp;<a href="http://Ingasoftplus.com" target="_self">Ingasoftplus</a></p><h2>Search</h2>
+  <p><input type="search" id="q" onsearch="fnSearch()"></p>
 </div>
 
 <script>
@@ -37,6 +36,98 @@ function fnSearch() {
   //window.location.href = "http://google.com/search?q="+el.value;
   window.location.href = "http://bing.com/search?q="+encodeURI(el.value);
 }
+
+function fnAppendExpressMenuItem(title, uri, domain) {
+  const menu = document.getElementById("menu");
+  for (const child of menu.children) {
+    if (child.tagName=="H2" && child.textContent=="Search") {
+      // "Search" found, add new item just before it.
+      let p = document.createElement("p");
+      let img = document.createElement("img");
+      let a = document.createElement("a");
+
+      img.src = "http://www.google.com/s2/favicons?domain="+domain;
+      img.alt = title;
+      img.style = "height:16px; width:16px";
+
+      a.href = uri;
+      a.target = "_self";
+      a.innerHTML = title;
+
+      p.appendChild(img);
+      p.appendChild(a);
+      child.before(p);
+
+      break;
+    }
+  }
+  return document.documentElement.outerHTML;
+}
+
+function fnFindExpressMenuItem(title) {
+  const menu = document.getElementById("menu");
+  for (const child of menu.children) {
+    if (child.tagName=="P") {
+      for (const grandChild of child.children) {
+        if (grandChild.tagName=="A" && grandChild.textContent==title) {
+          return grandChild;
+        }
+      }
+    }
+  }
+  return null;
+}
+
+function fnEditExpressMenuItem(title, newTitle) {
+  const a = fnFindExpressMenuItem(title);
+  a.textContent = newTitle;
+}
+
+function fnDeleteExpressMenuItem(title) {
+  const a = fnFindExpressMenuItem(title);
+  const p = a.parentNode;
+  const menu = p.parentNode;
+  p.removeChild(a).remove();
+  menu.removeChild(p).remove();
+}
+
+function fnGetExpressMenuCount() {
+  let count = 0;
+  
+  const menu = document.getElementById("menu");
+  for (const child of menu.children) {
+    if (child.tagName=="P") {
+      // menu item
+      count++;
+    } else if (child.tagName=="H2" && child.textContent=="Search") {
+      // out of menu items
+      break;
+    }
+  }
+  return count;
+}
+
+function fnMoveExpressMenuItem(title, direction) {
+  const a = fnFindExpressMenuItem(title);
+  const p = a.parentNode;
+  const menu = p.parentNode;
+  const childElementCount = fnGetExpressMenuCount();
+  const firstItem = menu.children[1];
+  const lastItem = menu.children[childElementCount];
+  
+  const thisIndex = Array.from(menu.children).indexOf(p); // 0 is <h2>Quick access</h2> index, 1 is first menu item index
+  if (thisIndex == 1 && direction == "up") {
+    // make it last item
+    menu.insertBefore(p, lastItem.nextElementSibling);
+  } else if (thisIndex == childElementCount && direction == "down") {
+    // make it first item
+    menu.insertBefore(p, firstItem);
+  } else if (direction == "up") {
+    menu.insertBefore(p, p.previousElementSibling);
+  } else if (direction == "down") {
+    menu.insertBefore(p, p.nextElementSibling.nextElementSibling);
+  }
+}
 </script>
-</body>
-</html>
+
+</body></html>
